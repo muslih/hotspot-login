@@ -1,0 +1,233 @@
+/*******************************************************************************/
+/*     2. Header
+/*******************************************************************************/
+
+@import "compass";
+@import "spr/*.png";
+
+
+/*******************************************************************************/
+/*     variable
+/*******************************************************************************/
+
+$bg:#fb6e72;
+$aside:#ce050a;
+$section:#fff;
+
+$maincolor:#155F83;
+
+/*******************************************************************************/
+/*     mixin
+/*******************************************************************************/
+
+@mixin transisi{
+	@include transition-duration(1s);
+}
+
+@mixin tombol($bg:$aside, $warna:$section){
+	@include border-radius(5px);
+	padding:5px 10px;
+	color: $warna;
+	text-decoration:none;
+	@include background(linear-gradient(lighten($bg,10%),darken($bg,5%)));
+	@include box-shadow(0px 0px 0px 4px rgba($warna,0.6));
+	border: none;
+	font-size: 13px;
+	@include transisi;
+	
+	&:hover{
+		@include background(linear-gradient(darken($bg,5%),lighten($bg,10%)));
+		@include transisi;
+	}
+}
+
+@mixin navigasi($bg-main:transparent,$bg-hov:$aside,$col-main:$aside,$col-hov:$section){
+	// @include transition-property(background);
+	@include transisi;
+	font-size: 13px;
+	margin-left: 5px;
+	display: block;
+	padding: 8px 10px;
+	text-decoration: none;
+	color: $col-main;
+	background: $bg-main;
+	@include border-radius(5px);
+	
+	&:hover{
+		// @include transition-property(background);
+		@include transisi;
+		color: $col-hov;
+		background: $bg-hov;
+	}
+
+	&:active{
+		background:#fff;
+		color:$col-main;
+		@include box-shadow(0 -3px 0 $bg-hov);
+	}
+}
+
+@mixin form($bg:$maincolor){
+	padding: 25px;
+	background-color: rgba($bg,0.8);
+	// background-color: rgba(250,250,250,0.5);
+	border-radius: 5px;
+	@include box-shadow(0px 0px 5px 0px rgba(#fff, 0.2),0px 0px 0px 5px rgba($maincolor,0.7),inset 0px 1px 0px 0px rgba(250, 250, 250, 0.5));
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	@include transition-duration(1s);
+
+	&:hover{
+		@include transition-duration(1s);
+		@include box-shadow(0px 0px 5px 0px rgba(#fff, 0.2),0px 0px 0px 5px rgba($maincolor,1),inset 0px 1px 0px 0px rgba(250, 250, 250, 0.5));
+	}
+}
+
+
+/*******************************************************************************/
+/*     general
+/*******************************************************************************/
+
+
+html{
+	background: lighten($maincolor,20%) url(../img/bg.png) bottom right no-repeat;
+	background-attachment: fixed;
+	background-size: 100%;
+}
+body{
+	// background: lighten($maincolor,20%) url(../img/bg.png) bottom right no-repeat;
+	// background-attachment: fixed;
+	// background-size: 100%;
+	// min-height: 500px; 
+	// height:auto !important; 
+	// height: 800px;
+	text-align: center; 
+	font-size: 13px;
+	p{
+		color: $maincolor;
+	}
+}
+
+
+#form{
+	@include form($section);
+	margin-top: 20%;
+	
+	a{
+		color: $maincolor;
+		text-decoration: none;
+		display: block;
+
+		&:hover{
+			color: lighten($maincolor,20%);
+		}
+	}
+
+	h1{
+		margin-top: 0px;
+		color: $maincolor;
+		@include text-shadow(0 1px 0 #fff);
+	}
+
+}
+
+input[type="text"]{
+	display: block;
+	margin: auto;
+	padding: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	margin-bottom: 10px;
+	@include border-radius(5px);
+	@include box-shadow(inset 0px 1px 3px 0px rgba(0, 0, 0, 0.1),0px 1px 0px 0px rgba(250, 250, 250, 0.5))
+}
+
+input[type="password"]{
+	@extend input[type="text"];
+}
+
+input[type="submit"]{
+	@include tombol($maincolor,$section);
+	margin-top: 15px;
+}
+
+button{
+	@extend input[type="submit"];
+}
+
+#social{
+	display: inline-block;
+	ul{
+		margin:0;
+		padding:0;
+	}
+
+	li{
+		text-align: center;
+		margin-left: 10px;
+		display: inline-table;
+		float: left;
+		a{
+			height: 32px;
+			width: 32px;
+			display: block;
+			@include border-radius(50%);
+			@include box-shadow(inset 0 0 0 4px rgba($maincolor,0.5));
+			@include transition-duration(1s);
+			&.web{
+				@include spr-sprite("home");
+				@include hide-text;
+			}
+			&.tw{
+				@include spr-sprite("twitter");
+				@include hide-text;
+			}
+			&.fb{
+				@include spr-sprite("facebook");
+				@include hide-text;
+			}
+			&.yt{
+				@include spr-sprite("youtube");
+				@include hide-text;
+			}
+
+			&.gp{
+				@include spr-sprite("googlep");
+				@include hide-text;
+			}
+
+			&:hover{
+				// @include opacity(0.5);
+				@include transition-duration(1s);
+				@include box-shadow(inset 0 0 0 4px rgba($maincolor,1));
+			}
+		}
+	}
+
+}
+
+
+footer{
+	// @extend #form;
+	margin-top: 20px;
+	p{
+		color: #444;
+		@include text-shadow(1px 1px 0 #fff);
+	}
+}
+
+@media only screen and (max-width: 660px) {
+	html{
+		background-size: 150%;
+		min-height: 400px;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	html{
+		background-size: 250%;
+		background-position: bottom right;
+	}
+
+	#form{
+		padding:10px 5px;
+	}
+}

@@ -1,0 +1,67 @@
+/*******************************************************************************/
+/*     1. Zeengrid
+/*******************************************************************************/
+
+// normalisasi
+@import 'normalize'; 
+
+// import compass reset module
+@import 'compass';
+
+// definisikan variable
+$lebarBungkus:978px;
+$lebarKolom: 5.5; //dalam persentasi
+$kolom: 12; //duabelas kolom
+
+$spasiKolom: (100 - ($lebarKolom * $kolom)) / ($kolom - 1);
+
+//$spasiKolom:3.0909;
+
+// gambar yang fleksible
+img{
+	height:auto;
+	max-width: 100%;
+}
+
+.bungkus{
+	padding : 0 15px;
+	position:relative;
+
+	//mixin untuk membuat clear pada float
+	@include pie-clearfix;
+}
+
+.baris{
+	width: 100%;
+	margin: 0 auto;
+	position:relative;
+
+	//bila ingin merubah lebar bungkkus,
+	//ubah variable $lebarbungkus
+	max-width: $lebarBungkus;
+
+	@include pie-clearfix; 
+}
+
+//pilih semua elemen dengan class 'zeen'
+[class*="zeen"]{
+	float:left;
+	display:inline;
+	min-height:1px;
+	position:relative;
+	margin-left: 1% * $spasiKolom; 
+
+	//margin pada kolom pertama
+	&:first-child{
+	margin-left:0;
+	}
+}
+
+@for $i from 1 through $kolom {
+	.zeen#{-$i} {
+		$lebKolom: 1% * ($lebarKolom * $i) + ($spasiKolom * ($i - 1));
+		width: $lebKolom;
+	}
+}
+
+@import 'zeen-resp';
