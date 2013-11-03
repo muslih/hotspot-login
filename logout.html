@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hotspot Login > Logout</title>
+	<link rel="stylesheet" href="stylesheets/style.css">
+	<script src="js/jquery.js"></script>
+
+</head>
+<body>
+	<script language="JavaScript">
+	<!--
+	    function openLogin() {
+		if (window.name != 'hotspot_logout') return true;
+		open('$(link-login)', '_blank', '');
+		window.close();
+		return false;
+	    }
+	//-->
+	</script>
+	<div class="bungkus">
+		<div class="baris">
+			<div class="zeen-4">
+				<div id="form">
+					<header>
+						<h1>Logout</h1>
+					</header>
+					<section>
+						<table width="100%" height="100%">
+						<tr>
+							<td align="center" valign="middle">
+							<b>Anda baru saja keluar</b> <br><br>
+							<table class="tabula">  
+								<tr>
+									<td align="right">user name</td>
+									<td>$(username)</td>
+								</tr>
+								<tr>
+									<td align="right">IP address</td>
+									<td>$(ip)</td>
+								</tr>
+								<tr>
+									<td align="right">MAC address</td>
+									<td>$(mac)</td>
+								</tr>
+								<tr>
+									<td align="right">session time</td>
+									<td>$(uptime)</td>
+								</tr>
+								$(if session-time-left)
+								<tr>
+									<td align="right">time left</td>
+									<td>$(session-time-left)</td>
+								</tr>
+								$(endif)
+								<tr>
+									<td align="right">bytes up/down:</td>
+									<td>$(bytes-in-nice) / $(bytes-out-nice)</td>
+								</tr>
+							</table>
+							<br>
+							<form action="$(link-login)" name="login" onSubmit="return openLogin()">
+								<input type="submit" value="log in">
+							</form>
+							</td>
+						</table>
+					</section>
+				</div> <!-- akhir #form -->
+				<footer>
+					<div id="social">
+						<ul>
+							<li><a class="web"href="http://stikes-mb.ac.id" target="self">Website</a></li>
+							<li><a class="yt"href="http://twitter.com/stikesmb" target="self">Youtube</a></li>
+							<li><a class="tw"href="http://twitter.com/stikesmb" target="self">Twitter</a></li>
+							<li><a class="fb"href="https://www.facebook.com/opstikesmb" target="self">Facebook</a></li>
+							<li><a class="gp"href="#" target="self">Google+</a></li>
+						</ul>
+					</div>
+					<p>
+						&copy; 2013 Sekolah Tinggi Ilmu Kesehatan Muhammadiyah Banjarmasin
+					</p>					
+				</footer>
+			</div>	<!-- akhir zeen-4 -->
+		</div>	<!-- akhir baris -->
+	</div>	<!-- akhir bungkus -->
+	
+	
+</body>
+<script></script>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hotspot Login</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="expires" content="-1" />
+	<link rel="stylesheet" href="stylesheets/style.css">
+	<script src="js/jquery.js"></script>
+
+
+</head>
+<body>
+	$(if chap-id)
+		<form name="sendin" action="$(link-login-only)" method="post">
+			<input type="hidden" name="username" />
+			<input type="hidden" name="password" />
+			<input type="hidden" name="dst" value="$(link-orig)" />
+			<input type="hidden" name="popup" value="true" />
+		</form>
+		
+		<script type="text/javascript" src="/md5.js"></script>
+		<script type="text/javascript">
+		<!--
+		    function doLogin() {
+			document.sendin.username.value = document.login.username.value;
+			document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+			document.sendin.submit();
+			return false;
+		    }
+		//-->
+		</script>
+	$(endif)
+	<div class="bungkus">
+		<div class="baris">
+			<div class="zeen-4">
+				<div id="form">
+					<header>
+						<h1>Hotspot Login</h1>
+					</header>
+					<section>
+						<form name="login" action="$(link-login-only)" method="post"
+					    $(if chap-id) onSubmit="return doLogin()" $(endif) >
+						    <input type="hidden" name="dst" value="$(link-orig)" />
+							<input type="hidden" name="popup" value="true" />
+
+							<input name="username" type="text" value="$(username)" placeholder="NIM/NIK" >
+							<input name="password" type="password" placeholder="sandi"  >
+							<button>Masuk</button>
+						</form>	
+						
+					</section>
+					$(if error)<br /><div style="color: #FF8080; font-size: 9px">$(error)</div>$(endif)
+				</div> <!-- akhir #form -->
+				<footer>
+					<div id="social">
+						<ul>
+							<li><a class="web"href="http://stikes-mb.ac.id" target="self">Website</a></li>
+							<li><a class="yt"href="http://twitter.com/stikesmb" target="self">Youtube</a></li>
+							<li><a class="tw"href="http://twitter.com/stikesmb" target="self">Twitter</a></li>
+							<li><a class="fb"href="https://www.facebook.com/opstikesmb" target="self">Facebook</a></li>
+							<li><a class="gp"href="#" target="self">Google+</a></li>
+						</ul>
+					</div>
+					<p>
+						&copy; 2013 Sekolah Tinggi Ilmu Kesehatan Muhammadiyah Banjarmasin
+					</p>					
+				</footer>
+			</div>	<!-- akhir zeen-4 -->
+		</div>	<!-- akhir baris -->
+	</div>	<!-- akhir bungkus -->	
+<script type="text/javascript">
+<!--
+  document.login.username.focus();
+//-->
+</script>	
+</body>
+<script></script>
+</html>
